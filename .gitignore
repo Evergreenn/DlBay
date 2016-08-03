@@ -1,5 +1,21 @@
 ### Example user template template
 ### Example user template
+### Laravel template
+/bootstrap/compiled.php
+.env.*.php
+.env.php
+.env
+### Yeoman template
+node_modules/
+bower_components/
+*.log
+
+build/
+dist/
+### Sass template
+.sass-cache/
+*.css.map
+
 
 # IntelliJ project files
 .idea
