@@ -15,8 +15,8 @@
 //    return view('welcome');
 //});
 
-Route::get('/', 'FileController@showFile')->name('showFile');
+Route::get('/', 'HomeController@index');
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+//Route::get('/home', 'HomeController@index');
