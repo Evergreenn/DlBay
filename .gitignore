@@ -21,11 +21,7 @@ dist/
 .idea
 *.iml
 out
-gen### Laravel template
-/bootstrap/compiled.php
-.env.*.php
-.env.php
-.env
+gen
 
 /vendor
 /node_modules

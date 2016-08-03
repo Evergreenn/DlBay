@@ -19,4 +19,5 @@ Route::get('/', 'HomeController@index');
 
 Route::auth();
 
-//Route::get('/home', 'HomeController@index');
+Route::get('/add', 'FileController@addFile');
+Route::post('/store', 'FileController@storeFile');
