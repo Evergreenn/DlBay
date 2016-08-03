@@ -3,7 +3,6 @@
 namespace DlBay\Http\Controllers;
 
 use DlBay\Http\Requests;
-use Illuminate\Http\Request;
 use Storage;
 
 
@@ -30,8 +29,12 @@ class HomeController extends Controller
         $aPathFile = [];
 
         foreach($files as $file):
-            $tmp = Storage::disk('local')->url($file);
-            $aPathFile[$file] = ['url' => $tmp];
+            $url = Storage::disk('local')->url($file);
+            $tmpDate = new \DateTime();
+            $tmpDate->setTimestamp(Storage::disk('local')->lastModified($file));
+            $lastUpdate = date_format($tmpDate, 'd/m/Y H:i:s');
+
+            $aPathFile[$file] = ['url' => $url, 'lastUpdate' => $lastUpdate];
         endforeach;
 
         return view('home', ['files' => $aPathFile]);

@@ -20,7 +20,7 @@
                                 {{--@endif--}}
                                 <div class="caption">
                                     <p>{{ $name }}</p>
-                                    <p>...</p>
+                                    <p>{{ $data['lastUpdate'] }}</p>
                                     <p><a href="{{$data['url']}}" class="btn btn-primary" role="button" download>Download</a></p>
                                 </div>
                             </div>
