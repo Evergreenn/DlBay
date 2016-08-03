@@ -30,6 +30,10 @@ class FileController extends Controller
         return view('file/file');
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function storeFile(Request $request)
     {
         $this->validate($request, [
