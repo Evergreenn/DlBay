@@ -40,8 +40,8 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="">
-                    Laravel
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    DlBay
                 </a>
             </div>
 
