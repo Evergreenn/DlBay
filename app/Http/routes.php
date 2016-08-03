@@ -16,3 +16,7 @@
 //});
 
 Route::get('/', 'FileController@showFile')->name('showFile');
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
