@@ -32,3 +32,4 @@ gen### Laravel template
 /public/storage
 Homestead.yaml
 Homestead.json
+/public
