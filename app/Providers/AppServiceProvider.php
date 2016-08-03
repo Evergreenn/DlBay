@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace DlBay\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

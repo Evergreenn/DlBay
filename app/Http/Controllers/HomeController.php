@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace DlBay\Http\Controllers;
 
-use App\Http\Requests;
+use DlBay\Http\Requests;
 use Illuminate\Http\Request;
+use Storage;
+
 
 class HomeController extends Controller
 {
@@ -24,6 +26,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $files = Storage::disk('local')->Files();
+        $aPathFile = [];
+
+        foreach($files as $file):
+            $tmp = Storage::disk('local')->url($file);
+            $aPathFile[$file] = ['url' => $tmp];
+        endforeach;
+
+        return view('home', ['files' => $aPathFile]);
     }
 }

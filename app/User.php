@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace DlBay;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 

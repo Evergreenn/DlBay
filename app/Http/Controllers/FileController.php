@@ -8,7 +8,7 @@
 
 //TODO: remove .idea
 
-namespace App\Http\Controllers;
+namespace DlBay\Http\Controllers;
 
 use Storage;
 
@@ -18,5 +18,6 @@ class FileController extends Controller
     public function showFile()
     {
         $files = Storage::disk('local')->Files();
+
     }
 }
