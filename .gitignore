@@ -1,0 +1,18 @@
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen### Laravel template
+/bootstrap/compiled.php
+.env.*.php
+.env.php
+.env
+
+/vendor
+/node_modules
+/public/storage
+Homestead.yaml
+Homestead.json
