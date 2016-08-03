@@ -6,8 +6,6 @@
  * Time: 13:01
  */
 
-//TODO: remove .idea
-
 namespace DlBay\Http\Controllers;
 
 use DlBay\File;
