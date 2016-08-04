@@ -37,7 +37,10 @@ class FileController extends Controller
         $this->validate($request, [
             'name' => 'required|max:255',
             'description' => 'max:255',
-            'file' => 'required',
+            'file' => [
+                'required',
+                'mimes:jpeg,bmp,png,avi,mpeg,quicktime,mp4,x-msvideo',
+            ]
         ]);
 
         if ($request->file('file')->isValid()) {

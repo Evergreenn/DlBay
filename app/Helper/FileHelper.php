@@ -7,9 +7,14 @@
  */
 
 namespace DlBay\Helper;
+use DlBay\Storage;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 
 
 class FileHelper
 {
+    public static function FileSecurityCheck(Storage $file)
+    {
 
+    }
 }
