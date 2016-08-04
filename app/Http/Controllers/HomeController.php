@@ -2,6 +2,7 @@
 
 namespace DlBay\Http\Controllers;
 
+use DlBay\Repositories\FileRepository;
 use DlBay\Http\Requests;
 use Storage;
 
@@ -25,16 +26,22 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $files = Storage::disk('local')->Files();
+        $files = FileRepository::getFile();
         $aPathFile = [];
 
         foreach($files as $file):
-            $url = Storage::disk('local')->url($file);
-            $tmpDate = new \DateTime();
-            $tmpDate->setTimestamp(Storage::disk('local')->lastModified($file));
-            $lastUpdate = date_format($tmpDate, 'd/m/Y H:i:s');
 
-            $aPathFile[$file] = ['url' => $url, 'lastUpdate' => $lastUpdate];
+            if(false !== Storage::disk('local')->exists($file->file)):
+
+                $url = Storage::disk('local')->url($file->file);
+
+                $tmpDate = new \DateTime();
+
+                $tmpDate->setTimestamp(Storage::disk('local')->lastModified($file->file));
+                $lastUpdate = date_format($tmpDate, 'd/m/Y H:i:s');
+
+                $aPathFile[$file->name] = ['url' => $url, 'lastUpdate' => $lastUpdate];
+            endif;
         endforeach;
 
         return view('home', ['files' => $aPathFile]);

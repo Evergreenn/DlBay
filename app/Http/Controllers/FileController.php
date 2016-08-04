@@ -36,12 +36,12 @@ class FileController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:255',
+            'description' => 'max:255',
             'file' => 'required',
         ]);
 
         if ($request->file('file')->isValid()) {
 
-            $extension = $request->file('file')->getClientOriginalExtension();
             $ResourceFile = $request->file('file');
 
             $file = new File();
@@ -51,11 +51,11 @@ class FileController extends Controller
             $file->description = $allInput['description'];
             $file->file = $request->file('file')->getClientOriginalName();
 
-            $exists = Storage::disk('local')->exists("$file->name.$extension");
+            $exists = Storage::disk('local')->exists($file->file);
             if(!$exists):
 
                 Storage::put(
-                    "$file->name.$extension",
+                    $file->file,
                     file_get_contents($ResourceFile->getRealPath())
                 );
                 $file->save();
