@@ -34,13 +34,13 @@ class HomeController extends Controller
             if(false !== Storage::disk('local')->exists($file->file)):
 
                 $url = Storage::disk('local')->url($file->file);
+                $UploadDate = date_format($file->created_at, 'd/m/Y H:i:s');
 
-                $tmpDate = new \DateTime();
-
-                $tmpDate->setTimestamp(Storage::disk('local')->lastModified($file->file));
-                $lastUpdate = date_format($tmpDate, 'd/m/Y H:i:s');
-
-                $aPathFile[$file->name] = ['url' => $url, 'lastUpdate' => $lastUpdate];
+                $aPathFile[$file->name] = [
+                    'url' => $url,
+                    'lastUpdate' => $UploadDate,
+                    'description' => $file->description,
+                ];
             endif;
         endforeach;
 

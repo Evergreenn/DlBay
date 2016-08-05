@@ -19,8 +19,10 @@
                                     {{--<img src="{{$data['url']}}" alt="...">--}}
                                 {{--@endif--}}
                                 <div class="caption">
-                                    <p>{{ $name }}</p>
-                                    <p>{{ $data['lastUpdate'] }}</p>
+                                    <h4>{{ $name }} </h4>
+                                    <small>Uploaded on : {{ $data['lastUpdate'] }}</small>
+                                    {{--<p></p>--}}
+                                    <p>{{ $data['description'] }}</p>
                                     <p><a href="{{$data['url']}}" class="btn btn-primary" role="button" download>Download</a></p>
                                 </div>
                             </div>

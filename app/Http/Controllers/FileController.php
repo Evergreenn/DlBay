@@ -39,7 +39,7 @@ class FileController extends Controller
             'description' => 'max:255',
             'file' => [
                 'required',
-                'mimes:jpeg,bmp,png,avi,mpeg,quicktime,mp4,x-msvideo',
+                'mimetypes:video/avi,video/mpeg,video/quicktime,video/mp4,video/x-msvideo,image/jpeg,image/png',
             ]
         ]);
 
