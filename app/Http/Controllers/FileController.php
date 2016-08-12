@@ -11,6 +11,7 @@ namespace DlBay\Http\Controllers;
 use DlBay\File;
 use Storage;
 use Illuminate\Http\Request;
+use DlBay\Jobs\UploadFile;
 
 class FileController extends Controller
 {
@@ -20,7 +21,6 @@ class FileController extends Controller
     }
 
     /**
-     * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function addFile()
@@ -52,15 +52,18 @@ class FileController extends Controller
             $allInput = $request->all();
             $file->name = $allInput['name'];
             $file->description = $allInput['description'];
-            $file->file = $request->file('file')->getClientOriginalName();
+            $file->file = $ResourceFile->getClientOriginalName();
 
             $exists = Storage::disk('local')->exists($file->file);
             if(!$exists):
 
-                Storage::put(
-                    $file->file,
-                    file_get_contents($ResourceFile->getRealPath())
-                );
+                $arg= [
+                    'name' => $ResourceFile->getClientOriginalName(),
+                    'path' => $ResourceFile->getRealPath()
+                ];
+
+                $job = (new UploadFile($arg))->onQueue('uploads');
+                $this->dispatch($job);
                 $file->save();
 
                 return redirect('/');
